@@ -9,6 +9,8 @@ import com.google.android.material.shape.ShapeAppearanceModel;
 import ninja.corex.privateutil.PrivateColorUtil;
 
 public class PrograssDialogCompat extends ProgressDialog {
+	protected MaterialShapeDrawable shape;
+	
 	public PrograssDialogCompat(Context context) {
 		super(context);
 
@@ -28,7 +30,7 @@ public class PrograssDialogCompat extends ProgressDialog {
 	}
 
 	public void setShapeCut(int color, int stokerColor, float sizeShape) {
-		MaterialShapeDrawable shape = new MaterialShapeDrawable(
+		 shape = new MaterialShapeDrawable(
 				ShapeAppearanceModel.builder().setAllCorners(PrivateColorUtil.CornerCut, sizeShape).build());
 		shape.setFillColor(ColorStateList.valueOf(color));
 		shape.setStroke(1f, stokerColor);
@@ -36,7 +38,7 @@ public class PrograssDialogCompat extends ProgressDialog {
 	}
 
 	public void setShapeRounde(int color, int stoker, float sizeShape) {
-		MaterialShapeDrawable shape = new MaterialShapeDrawable(
+		 shape = new MaterialShapeDrawable(
 				ShapeAppearanceModel.builder().setAllCorners(PrivateColorUtil.CornerNormal, sizeShape).build());
 		shape.setFillColor(ColorStateList.valueOf(color));
 		shape.setStroke(1f, stoker);
