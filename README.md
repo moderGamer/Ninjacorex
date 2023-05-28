@@ -2,6 +2,14 @@
 
 Ninja corex is an Android library in Java language for developers to shorten their codes
 
+# image from demo app
+
+<div style ="center">
+	<img src ="https://raw.githubusercontent.com/moderGamer/Ninjacorex/main/images/Screenshot_20230528-090854_libraryNinja.jpg" width="300px" style="padding : 8px;"/>
+	<hr/>
+	<img src ="https://raw.githubusercontent.com/moderGamer/Ninjacorex/main/images/Screenshot_20230528-090846_libraryNinja.jpg" width="300px" style ="paddong :8px;"/>
+</div>
+<hr/>
 # Note
 
 This library is officially released in the future in the form of aar, but you can use java files
