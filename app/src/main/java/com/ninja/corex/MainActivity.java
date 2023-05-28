@@ -1,4 +1,4 @@
-package ninja.corex;
+package com.ninja.corex;
 
 import android.Manifest;
 import android.content.pm.PackageManager;

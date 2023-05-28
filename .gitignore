@@ -13,3 +13,6 @@
 .externalNativeBuild
 .cxx
 local.properties
+.androidide
+app/build
+lib/build
