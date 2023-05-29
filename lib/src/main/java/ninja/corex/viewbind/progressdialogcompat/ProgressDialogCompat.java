@@ -3,9 +3,10 @@ package ninja.corex.viewbind.prograssdialogcompat;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.ColorStateList;
-import com.google.android.material.shape.CornerFamily;
+
 import com.google.android.material.shape.MaterialShapeDrawable;
 import com.google.android.material.shape.ShapeAppearanceModel;
+
 import ninja.corex.privateutil.PrivateColorUtil;
 
 public class ProgressDialogCompat extends ProgressDialog {
