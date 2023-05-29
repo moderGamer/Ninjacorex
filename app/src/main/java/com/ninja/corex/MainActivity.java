@@ -30,181 +30,189 @@ import ninja.corex.viewbind.textviewcore.EditTextCore;
 import ninja.corex.viewbind.textviewcore.TextViewCore;
 
 public class MainActivity extends AppCompatActivity {
-	///this Fake Data not Smpie app
-	private TextViewCore core;
-	private EditTextCore cores;
-	private FabCore fabCore;
-	//Read item
-	private PhotoView photoView;
-	private SwitchButton button;
+  /// this Fake Data not Smpie app
+  private TextViewCore core;
+  private EditTextCore cores;
+  private FabCore fabCore;
+  // Read item
+  private PhotoView photoView;
+  private SwitchButton button;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		button = findViewById(R.id.swi);
-		button.setOnCheckedChangeListener((i, is) -> {
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+    button = findViewById(R.id.swi);
+    button.setOnCheckedChangeListener((i, is) -> {});
 
-		});
-		button.setAnimationDuration(2000L);
-		button.setThumbDrawable(new ColorDrawable(Color.RED));
-		button.setBackDrawable(new ColorDrawable(Color.BLUE));
-		button.setThumbColor(ColorStateList.valueOf(Color.MAGENTA));
-		photoView = (PhotoView) findViewById(R.id.img);
-		fabCore = (FabCore) findViewById(R.id.fab);
-	//	Ui();
+    button.setAnimationDuration(2000L);
+    button.setThumbDrawable(new ColorDrawable(Color.RED));
+    button.setBackDrawable(new ColorDrawable(Color.BLUE));
+    button.setThumbColor(ColorStateList.valueOf(Color.MAGENTA));
+    photoView = (PhotoView) findViewById(R.id.img);
+    fabCore = (FabCore) findViewById(R.id.fab);
+    //	Ui();
 
-		fabCore.setOnClickListener(c -> {
+    fabCore.setOnClickListener(
+        c -> {
+          AnimationUtils.FadeIn(fabCore);
+          PrograssDialogCompat prograssDialogCompat =
+              new PrograssDialogCompat(MainActivity.this, PrograssDialogCompat.StyleMobileDrak());
+          prograssDialogCompat.setTitle("Hello");
+          prograssDialogCompat.setShapeCut(Color.BLACK, Color.BLUE, 16);
+          prograssDialogCompat.show();
+        });
+    fab();
+    if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE)
+            == PackageManager.PERMISSION_DENIED
+        || ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            == PackageManager.PERMISSION_DENIED) {
+      ActivityCompat.requestPermissions(
+          this,
+          new String[] {
+            Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE
+          },
+          1000);
+    } else {
+    }
+    DialogCore dialogCore = new DialogCore(this);
+    dialogCore.setDialogMakeFile("/storage/emulated/0/Codex/");
+    dialogCore.setShapeCut(30f, Color.RED, Color.BLACK);
+    dialogCore.show();
+  }
 
-			AnimationUtils.FadeIn(fabCore);
-			PrograssDialogCompat prograssDialogCompat = new PrograssDialogCompat(MainActivity.this,
-					PrograssDialogCompat.StyleMobileDrak());
-			prograssDialogCompat.setTitle("Hello");
-			prograssDialogCompat.setShapeCut(Color.BLACK, Color.BLUE, 16);
-			prograssDialogCompat.show();
+  public void installPrograssDialogCompat() {
+    PrograssDialogCompat compat =
+        new PrograssDialogCompat(MainActivity.this, PrograssDialogCompat.StyleMobileDrak());
+    compat.setTitle("Hello word");
+    compat.setShapeCut(Color.BLACK, Color.RED, 20f);
+    compat.show();
+    final Handler handler = new Handler();
+    handler.postDelayed(
+        () -> {
+          compat.dismiss();
+        },
+        300L);
+  }
 
-		});
-		fab();
-		if (ContextCompat.checkSelfPermission(this,
-				Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED
-				|| ContextCompat.checkSelfPermission(this,
-						Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-			ActivityCompat.requestPermissions(this, new String[] { Manifest.permission.READ_EXTERNAL_STORAGE,
-					Manifest.permission.WRITE_EXTERNAL_STORAGE }, 1000);
-		} else {
-		}
-		DialogCore dialogCore = new DialogCore(this);
-		dialogCore.setDialogMakeFile("/storage/emulated/0/Codex/");
-		dialogCore.setShapeCut(30f, Color.RED, Color.BLACK);
-		dialogCore.show();
-	}
+  public void TextViewCoreAndEditTextCore() {
+    /// TextView
+    core.setAutoScroll();
+    core.setTextColorString("#ff323232");
+    /// EditText
+    cores.setAutoScroll();
+    cores.setHintColorString("#ff323233");
+    cores.setHighlightColorString("#424342");
+    /// طول تگست
+    cores.setMaxSizeText(30);
+    cores.setBackGroundColorsString("#ff3232");
+    cores.setBackGroundColors(Color.RED);
+    cores.setDrawingCacheBackgroundColor(0);
+  }
 
-	public void installPrograssDialogCompat() {
-		PrograssDialogCompat compat = new PrograssDialogCompat(MainActivity.this,
-				PrograssDialogCompat.StyleMobileDrak());
-		compat.setTitle("Hello word");
-		compat.setShapeCut(Color.BLACK, Color.RED, 20f);
-		compat.show();
-		final Handler handler = new Handler();
-		handler.postDelayed(() -> {
-			compat.dismiss();
-		}, 300L);
-	}
+  private void FileData() {
+    FileCounter fileCounter = new FileCounter(core);
+    fileCounter.execute("");
+    NinjaMacroFileUtil.createDirectory(
+        "YourPath",
+        new NinjaMacroFileUtil.OnFileOperationListener() {
+          @Override
+          public void onSuccess(String message) {}
 
-	public void TextViewCoreAndEditTextCore() {
-		///TextView
-		core.setAutoScroll();
-		core.setTextColorString("#ff323232");
-		///EditText
-		cores.setAutoScroll();
-		cores.setHintColorString("#ff323233");
-		cores.setHighlightColorString("#424342");
-		///طول تگست
-		cores.setMaxSizeText(30);
-		cores.setBackGroundColorsString("#ff3232");
-		cores.setBackGroundColors(Color.RED);
-	}
+          @Override
+          public void onError(String errorMessage) {}
+        });
+    NinjaMacroFileUtil.createFile(
+        "Your File",
+        "data type",
+        new NinjaMacroFileUtil.OnFileOperationListener() {
+          @Override
+          public void onSuccess(String message) {}
 
-	private void FileData() {
-		FileCounter fileCounter = new FileCounter(core);
-		fileCounter.execute("");
-		NinjaMacroFileUtil.createDirectory("YourPath", new NinjaMacroFileUtil.OnFileOperationListener() {
-			@Override
-			public void onSuccess(String message) {
-			}
+          @Override
+          public void onError(String errorMessage) {}
+        });
+  }
 
-			@Override
-			public void onError(String errorMessage) {
-			}
-		});
-		NinjaMacroFileUtil.createFile("Your File", "data type", new NinjaMacroFileUtil.OnFileOperationListener() {
-			@Override
-			public void onSuccess(String message) {
-			}
+  public void fab() {
+    fabCore.setShapeCut(20f);
+    //	fabCore.setShapeRounde(Color.BLACK, Color.RED, 20f);
+    fabCore.setIcon(android.R.drawable.arrow_down_float);
+    fabCore.setIconColorFilter(Color.BLUE, PorterDuff.Mode.MULTIPLY);
+  }
 
-			@Override
-			public void onError(String errorMessage) {
-			}
-		});
-	}
+  private void Ui() {
+    new TaskHelping(
+            new TaskHelping.OnStart() {
+              @Override
+              public void onPreExecute() {
+                Show("Start");
+              }
 
-	public void fab() {
-		fabCore.setShapeCut(20f);
-		//	fabCore.setShapeRounde(Color.BLACK, Color.RED, 20f);
-		fabCore.setIcon(android.R.drawable.arrow_down_float);
-		fabCore.setIconColorFilter(Color.BLUE, PorterDuff.Mode.MULTIPLY);
-	}
+              @Override
+              public void ondoInBackground(String... object) {
+                Show("Data");
+              }
 
-	private void Ui() {
-		new TaskHelping(new TaskHelping.OnStart() {
-			@Override
-			public void onPreExecute() {
-				Show("Start");
-			}
+              @Override
+              public void onProgressUpdate(String... object) {
+                Show("Prograss");
+              }
 
-			@Override
-			public void ondoInBackground(String... object) {
-				Show("Data");
-			}
+              @Override
+              public void onPost(String result) {
+                Show("Post");
+              }
 
-			@Override
-			public void onProgressUpdate(String... object) {
-				Show("Prograss");
-			}
+              @Override
+              public void onCancelled(String object) {
+                Show("Cancelled!");
+              }
+            })
+        .execute("");
 
-			@Override
-			public void onPost(String result) {
-				Show("Post");
-			}
+    Callable<String> callable =
+        () -> {
+          for (int a = 0; a > 300000000; a++) {
+            return "Hello word";
+          }
+          return null;
+        };
 
-			@Override
-			public void onCancelled(String object) {
-				Show("Cancelled!");
-			}
+    ThreadCompat.runInBackground(
+        callable,
+        new ThreadCompat.OnStartListener() {
+          @Override
+          public void onStart() {
+            Show("Starts");
+          }
+        },
+        new ThreadCompat.OnProgressUpdateListener() {
+          @Override
+          public void onProgressUpdate(Object[] values) {
+            Show("PrograssBar");
+          }
+        },
+        new ThreadCompat.OnCompleteListener() {
+          @Override
+          public void onComplete(Object result) {
+            Show(result.toString());
+          }
+        },
+        new ThreadCompat.OnCancelledListener() {
+          @Override
+          public void onCancelled() {
+            Show("Cansel");
+          }
+        });
 
-		}).execute("");
+    // ThreadCompat.runOnBackgroundThread(() -> {
+    // کد خود را بنویسید
+    ///	});
 
-		Callable<String> callable = () -> {
-			for (int a = 0; a > 300000000; a++) {
-				return "Hello word";
-			}
-			return null;
-		};
+  }
 
-		ThreadCompat.runInBackground(callable, new ThreadCompat.OnStartListener() {
-			@Override
-			public void onStart() {
-				Show("Starts");
-			}
-
-		}, new ThreadCompat.OnProgressUpdateListener() {
-			@Override
-			public void onProgressUpdate(Object[] values) {
-				Show("PrograssBar");
-			}
-
-		}, new ThreadCompat.OnCompleteListener() {
-			@Override
-			public void onComplete(Object result) {
-				Show(result.toString());
-			}
-
-		}, new ThreadCompat.OnCancelledListener() {
-			@Override
-			public void onCancelled() {
-				Show("Cansel");
-			}
-
-		});
-
-		//ThreadCompat.runOnBackgroundThread(() -> {
-		// کد خود را بنویسید
-		///	});
-
-	}
-
-	public void Show(String m) {
-		Toast.makeText(getApplicationContext(), m, 2).show();
-	}
-
+  public void Show(String m) {
+    Toast.makeText(getApplicationContext(), m, 2).show();
+  }
 }

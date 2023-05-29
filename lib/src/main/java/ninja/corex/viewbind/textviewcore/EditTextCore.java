@@ -70,8 +70,5 @@ public class EditTextCore extends TextInputEditText {
 			throw new ColorNotFoundException("You Add Color?");
 		}
 	}
-	
-
-
-
+    
 }

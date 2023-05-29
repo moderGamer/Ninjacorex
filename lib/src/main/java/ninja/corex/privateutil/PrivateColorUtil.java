@@ -5,8 +5,8 @@ import android.util.SparseIntArray;
 import com.google.android.material.shape.CornerFamily;
 
 public class PrivateColorUtil {
-	public static final int ColorCardBackground = 0;
-	public static final int ColorStokerCard = 1;
+	public static final int ColorCardBackground = Color.parseColor("#FF281D1B");
+	public static final int ColorStokerCard = Color.parseColor("#FFFFAF7A");
 	public static final int ColorStokerColorCard = 0;
 	public static final int DialogBackground = 0;
 	public static final int DialogStokerBackground = 0;
