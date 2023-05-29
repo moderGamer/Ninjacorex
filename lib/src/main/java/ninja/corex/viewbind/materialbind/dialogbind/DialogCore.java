@@ -26,6 +26,10 @@ public class DialogCore extends MaterialAlertDialogBuilder {
     this.activity = activity;
   }
 
+  public DialogCore(Context co) {
+    super(co);
+  }
+
   public DialogCore setDialogMakeFolder(String Folder) {
     ViewGroup viewGroup = activity.findViewById(android.R.id.content);
     View view =
@@ -39,7 +43,7 @@ public class DialogCore extends MaterialAlertDialogBuilder {
     setMessage("Can you make new Folder??");
     inputLayoutCore.setTag("inputLayoutCore");
     core.setTag("core");
-    
+
     inputLayoutCore.setShapeCut(10, ColorStateList.valueOf(PrivateColorUtil.ColorCardBackground));
     setPositiveButton(
         "Make folder",
@@ -73,7 +77,7 @@ public class DialogCore extends MaterialAlertDialogBuilder {
     core.setHintTextColor(ColorStateList.valueOf(Color.RED));
     setMessage("Can you make new Folder??");
     inputLayoutCore.setTag("inputLayoutCore");
-    
+
     core.setTag("core");
     inputLayoutCore.setShapeCut(20, ColorStateList.valueOf(PrivateColorUtil.ColorCardBackground));
 

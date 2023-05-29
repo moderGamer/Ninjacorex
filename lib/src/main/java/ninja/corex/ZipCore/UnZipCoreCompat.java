@@ -2,39 +2,40 @@ package ninja.corex.ZipCore;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.content.res.ColorStateList;
 import android.os.*;
 import java.io.*;
 import java.util.zip.*;
 import ninja.corex.viewbind.materialbind.dialogbind.DialogCore;
-import ninja.corex.viewbind.prograssdialogcompat.ProgressDialogCompat;
+import ninja.corex.viewbind.prograssdialogcompat.*;
+
 /** Code by ninja coder how to using? see MainActivity */
 public class UnZipCoreCompat extends AsyncTask<String, Object, Boolean> {
 
-  private Context context;
-  private PrograssDialogCompat progressDialog;
+  private Context setContext;
+  private ProgressDialogCompat progressDialog;
   private String destDirectory = "";
   private static int ColorBackground = Color.parseColor("#FF281D1B");
   private static int ColorStoker = Color.parseColor("#FFFCB07D");
   private OnResult mresult;
 
-  public UnZipCoreCompat(Context context, OnResult mresult) {
-    this.context = context;
+  public UnZipCoreCompat(Context setContext, OnResult mresult) {
+    this.setContext = setContext;
     this.mresult = mresult;
   }
 
   @Override
   protected void onPreExecute() {
     super.onPreExecute();
-    progressDialog = new PrograssDialogCompat(context, PrograssDialogCompat.StyleMobileDrak());
+    progressDialog = new ProgressDialogCompat(setContext, ProgressDialogCompat.StyleMobileDrak());
     progressDialog.setTitle("UnZip");
     progressDialog.setMessage("UnZiping...");
     progressDialog.setIndeterminate(false);
     progressDialog.setMax(100);
     progressDialog.setShapeCut(ColorBackground, ColorStoker, 20f);
-    progressDialog.setProgressStyle(PrograssDialogCompat.STYLE_HORIZONTAL);
+    progressDialog.setProgressStyle(ProgressDialogCompat.STYLE_HORIZONTAL);
     progressDialog.setCancelable(false);
     progressDialog.show();
   }
@@ -112,14 +113,14 @@ public class UnZipCoreCompat extends AsyncTask<String, Object, Boolean> {
   }
 
   private void Dialoginit(CharSequence title, CharSequence msg) {
-    DialogCore dialog = new DialogCore(context);
+    DialogCore dialog = new DialogCore(setContext);
     dialog.setTitle(title);
     dialog.setMessage(msg);
     dialog.setShapeCut(20f, ColorStoker, ColorBackground);
     dialog.setPositiveButton("ok", null);
     dialog.show();
   }
- ///Helper to End Data
+
   public interface OnResult {
     void EndTask();
   }
