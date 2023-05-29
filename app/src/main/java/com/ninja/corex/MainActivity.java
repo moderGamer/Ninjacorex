@@ -6,15 +6,16 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
-import androidx.core.content.ContextCompat;
 import androidx.core.app.ActivityCompat;
-import java.util.concurrent.Callable;
+import androidx.core.content.ContextCompat;
+
 import ninja.corex.animation.AnimationUtils;
 import ninja.corex.file.FileCounter;
 import ninja.corex.file.NinjaMacroFileUtil;
@@ -28,6 +29,8 @@ import ninja.corex.viewbind.prograssdialogcompat.PrograssDialogCompat;
 import ninja.corex.viewbind.switchbind.SwitchButton;
 import ninja.corex.viewbind.textviewcore.EditTextCore;
 import ninja.corex.viewbind.textviewcore.TextViewCore;
+
+import java.util.concurrent.Callable;
 
 public class MainActivity extends AppCompatActivity {
 	///this Fake Data not Smpie app
