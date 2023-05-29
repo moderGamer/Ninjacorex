@@ -22,7 +22,7 @@ import ninja.corex.threadui.ThreadCompat;
 import ninja.corex.viewbind.imageviewzoomer.PhotoView;
 import ninja.corex.viewbind.materialbind.FabCore;
 import ninja.corex.viewbind.materialbind.dialogbind.DialogCore;
-import ninja.corex.viewbind.prograssdialogcompat.PrograssDialogCompat;
+import ninja.corex.viewbind.prograssdialogcompat.ProgressDialogCompat;
 import ninja.corex.viewbind.switchbind.SwitchButton;
 import ninja.corex.viewbind.textviewcore.EditTextCore;
 import ninja.corex.viewbind.textviewcore.TextViewCore;
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
     fabCore.setOnClickListener(
         c -> {
           AnimationUtils.FadeIn(fabCore);
-          PrograssDialogCompat prograssDialogCompat =
-              new PrograssDialogCompat(MainActivity.this, PrograssDialogCompat.StyleMobileDrak());
+          ProgressDialogCompat prograssDialogCompat =
+              new ProgressDialogCompat(MainActivity.this, ProgressDialogCompat.StyleMobileDrak());
           prograssDialogCompat.setTitle("Hello");
           prograssDialogCompat.setShapeCut(Color.BLACK, Color.BLUE, 16);
           prograssDialogCompat.show();
@@ -82,8 +82,8 @@ public class MainActivity extends AppCompatActivity {
   }
 
   public void installPrograssDialogCompat() {
-    PrograssDialogCompat compat =
-        new PrograssDialogCompat(MainActivity.this, PrograssDialogCompat.StyleMobileDrak());
+    ProgressDialogCompat compat =
+        new ProgressDialogCompat(MainActivity.this, ProgressDialogCompat.StyleMobileDrak());
     compat.setTitle("Hello word");
     compat.setShapeCut(Color.BLACK, Color.RED, 20f);
     compat.show();

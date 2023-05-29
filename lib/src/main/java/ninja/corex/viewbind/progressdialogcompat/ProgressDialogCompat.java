@@ -8,25 +8,25 @@ import com.google.android.material.shape.MaterialShapeDrawable;
 import com.google.android.material.shape.ShapeAppearanceModel;
 import ninja.corex.privateutil.PrivateColorUtil;
 
-public class PrograssDialogCompat extends ProgressDialog {
+public class ProgressDialogCompat extends ProgressDialog {
 	protected MaterialShapeDrawable shape;
 	
-	public PrograssDialogCompat(Context context) {
+	public ProgressDialogCompat(Context context) {
 		super(context);
 
 	}
-	public PrograssDialogCompat(Context context,int def) {
+	public ProgressDialogCompat(Context context,int def) {
 		super(context,def);
 
 	}
 
 	public static int StyleMobileDrak() {
-		return PrograssDialogCompat.THEME_DEVICE_DEFAULT_DARK;
+		return ProgressDialogCompat.THEME_DEVICE_DEFAULT_DARK;
 
 	}
 
 	public int StyleMoblieLight() {
-		return PrograssDialogCompat.THEME_DEVICE_DEFAULT_LIGHT;
+		return ProgressDialogCompat.THEME_DEVICE_DEFAULT_LIGHT;
 	}
 
 	public void setShapeCut(int color, int stokerColor, float sizeShape) {
