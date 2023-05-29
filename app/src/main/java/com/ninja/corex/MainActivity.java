@@ -8,10 +8,8 @@ import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.animation.AlphaAnimation;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -23,7 +21,6 @@ import ninja.corex.threadui.TaskHelping;
 import ninja.corex.threadui.ThreadCompat;
 import ninja.corex.viewbind.imageviewzoomer.PhotoView;
 import ninja.corex.viewbind.materialbind.FabCore;
-import ninja.corex.viewbind.materialbind.InputLayoutCore;
 import ninja.corex.viewbind.materialbind.dialogbind.DialogCore;
 import ninja.corex.viewbind.prograssdialogcompat.PrograssDialogCompat;
 import ninja.corex.viewbind.switchbind.SwitchButton;
