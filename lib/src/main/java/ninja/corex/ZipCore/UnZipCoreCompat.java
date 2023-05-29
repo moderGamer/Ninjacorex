@@ -9,7 +9,7 @@ import android.os.*;
 import java.io.*;
 import java.util.zip.*;
 import ninja.corex.viewbind.materialbind.dialogbind.DialogCore;
-import ninja.corex.viewbind.prograssdialogcompat.PrograssDialogCompat;
+import ninja.corex.viewbind.prograssdialogcompat.ProgressDialogCompat;
 /** Code by ninja coder how to using? see MainActivity */
 public class UnZipCoreCompat extends AsyncTask<String, Object, Boolean> {
 
