@@ -1,13 +1,13 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
 }
 
 android {
     compileSdk 32
     buildToolsVersion "33.0.0"
+    namespace "ninja.corex"
 
     defaultConfig {
-        applicationId "com.ninja.corex"
         minSdk 22
         targetSdk 31
         versionCode 1
@@ -35,5 +35,4 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.android.material:material:1.6.1'
-    implementation project(path:':lib')
 }
