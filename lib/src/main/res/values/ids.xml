@@ -1,0 +1,6 @@
+<resources>
+    <item
+            name="offsetValue"
+            type="id"
+            />
+</resources>
