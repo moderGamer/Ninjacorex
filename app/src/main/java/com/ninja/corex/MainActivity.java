@@ -9,11 +9,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
 import ninja.corex.ZipCore.UnZipCoreCompat;
 import ninja.corex.animation.AnimationUtils;
 import ninja.corex.file.FileCounter;
@@ -27,7 +25,6 @@ import ninja.corex.viewbind.prograssdialogcompat.ProgressDialogCompat;
 import ninja.corex.viewbind.switchbind.SwitchButton;
 import ninja.corex.viewbind.textviewcore.EditTextCore;
 import ninja.corex.viewbind.textviewcore.TextViewCore;
-
 import java.util.concurrent.Callable;
 
 public class MainActivity extends AppCompatActivity {
@@ -225,9 +222,11 @@ public class MainActivity extends AppCompatActivity {
 
               @Override
               public void EndTask() {
-                  Show("End");
+                Show("End");
               }
             });
     zip.execute(TargetFile, TargetPath);
   }
+
+  public void installSheetCompat() {}
 }
