@@ -4,8 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import android.view.inputmethod.InputMethod;
-import android.view.inputmethod.InputMethodManager;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,13 +13,9 @@ import java.nio.file.StandardOpenOption;
 import android.os.Handler;
 import android.os.Looper;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
 
 public class NinjaMacroFileUtil {
-
+  /* Using java 8 to Later*/
   public static void createDirectory(
       final String folderName, final OnFileOperationListener listener) {
 
@@ -89,6 +84,87 @@ public class NinjaMacroFileUtil {
                 }
               });
     }
+  }
+
+  /* using in code to java 7*/
+  protected static void createNewFile(String path, OnFileOperationListener listener) {
+    new Thread(
+            () -> {
+              int lastPath = path.lastIndexOf(File.separator);
+              if (lastPath > 0) {
+                String past = path.substring(0, lastPath);
+                makeDir(past);
+              }
+              File file = new File(path);
+              try {
+                if (!file.exists()) file.createNewFile();
+                notifyListener(listener, true, path);
+              } catch (IOException e) {
+                notifyListener(listener, false, e.getMessage());
+              }
+            })
+        .start();
+  }
+
+  public static void makeDir(String path) {
+    if (!isExistFile(path)) {
+      File file = new File(path);
+      file.mkdirs();
+    }
+  }
+
+  public static boolean isExistFile(String path) {
+    File file = new File(path);
+    return file.exists();
+  }
+
+  public static void deleteFile(String path, OnFileOperationListener listener) {
+    new Thread(
+            () -> {
+              File file = new File(path);
+              if (file.exists()) {
+                if (file.delete()) {
+                  notifyListener(listener, true, "File deleted successfully.");
+                } else {
+                  notifyListener(listener, false, "Failed to delete file.");
+                }
+              } else {
+                notifyListener(listener, false, "File does not exist!");
+              }
+            })
+        .start();
+  }
+
+  public static void moveFile(String srcPath, String destPath, OnFileOperationListener listener) {
+    new Thread(
+            () -> {
+              File srcFile = new File(srcPath);
+              if (!srcFile.exists()) {
+                notifyListener(listener, false, "File does not exist!");
+                return;
+              }
+
+              File destFile = new File(destPath);
+              if (destFile.exists()) {
+                notifyListener(listener, false, "Destination file already exists!");
+                return;
+              }
+
+              if (!srcFile.renameTo(destFile)) {
+                try {
+                  copyFile(srcFile, destFile);
+                  srcFile.delete();
+                  notifyListener(listener, true, "File moved successfully.");
+                } catch (IOException e) {
+                  notifyListener(listener, false, e.getMessage());
+                }
+              }
+            })
+        .start();
+  }
+
+  public static void copyFile(File src, File dst) throws IOException {
+    Files.copy(src.toPath(), dst.toPath());
   }
 
   public interface OnFileOperationListener {
