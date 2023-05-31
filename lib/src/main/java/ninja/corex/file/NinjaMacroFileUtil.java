@@ -5,6 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -166,10 +167,43 @@ public class NinjaMacroFileUtil {
   public static void copyFile(File src, File dst) throws IOException {
     Files.copy(src.toPath(), dst.toPath());
   }
+    public static String readFiles(String path,OnFileOperationListener getFiles) {
+        createNewFile(path,getFiles);
 
+        StringBuilder sb = new StringBuilder();
+        FileReader fr = null;
+        try {
+            fr = new FileReader(new File(path));
+
+            char[] buff = new char[1024];
+            int length = 0;
+
+            while ((length = fr.read(buff)) > 0) {
+                sb.append(new String(buff, 0, length));
+            }
+            notifyListener(getFiles, true, "File read successfully.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            notifyListener(getFiles, true, e.getMessage());
+        } finally {
+            if (fr != null) {
+                try {
+                    fr.close();
+                } catch (Exception e) {
+                    notifyListener(getFiles, true, e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+    }
   public interface OnFileOperationListener {
     void onSuccess(String message);
 
     void onError(String errorMessage);
   }
+    
+    
+    
 }
