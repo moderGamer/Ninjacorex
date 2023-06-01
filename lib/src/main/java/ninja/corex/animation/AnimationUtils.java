@@ -1,10 +1,11 @@
 package ninja.corex.animation;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.os.Handler;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-//import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.ScaleAnimation;
 import ninja.corex.R;
@@ -64,7 +65,8 @@ public class AnimationUtils {
   }
 
   public static void FadeinFromXml(View view) {
-    Animation anim = android.view.animation.AnimationUtils.loadAnimation(view.getContext(), R.anim.fadecompatin);
+    Animation anim =
+        android.view.animation.AnimationUtils.loadAnimation(view.getContext(), R.anim.fadecompatin);
     if (anim != null) {
       view.setAnimation(anim);
       anim.start();
@@ -72,10 +74,33 @@ public class AnimationUtils {
   }
 
   public static void FadeOutFromXml(View view) {
-    Animation anim = android.view.animation.AnimationUtils.loadAnimation(view.getContext(), R.anim.fadecompatout);
+    Animation anim =
+        android.view.animation.AnimationUtils.loadAnimation(
+            view.getContext(), R.anim.fadecompatout);
     if (anim != null) {
       view.setAnimation(anim);
       anim.start();
     }
+  }
+
+  public static void Circlerotationsettings(View view) {
+    final ObjectAnimator objectAnim = new ObjectAnimator();
+    objectAnim.setTarget(view);
+    objectAnim.setPropertyName("rotation");
+    objectAnim.setFloatValues((float) (90));
+    objectAnim.setFloatValues((float) (0), (float) (200));
+    objectAnim.setRepeatMode(ValueAnimator.RESTART);
+    objectAnim.start();
+    Handler hander = new Handler();
+    hander.postDelayed(
+        () -> {
+          objectAnim.setTarget(view);
+          objectAnim.setPropertyName("rotation");
+          objectAnim.setFloatValues((float) (0));
+          objectAnim.setFloatValues((float) (200), (float) (0));
+          objectAnim.setRepeatMode(ValueAnimator.REVERSE);
+          objectAnim.start();
+        },
+        3000);
   }
 }
