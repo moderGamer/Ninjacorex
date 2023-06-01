@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
+//import android.view.animation.AnimationUtils;
 import android.view.animation.BounceInterpolator;
 import android.view.animation.ScaleAnimation;
 import ninja.corex.R;
@@ -64,7 +64,7 @@ public class AnimationUtils {
   }
 
   public static void FadeinFromXml(View view) {
-    Animation anim = AnimationUtils.loadAnimation(view.getContext(), R.anim.fadeinCompat);
+    Animation anim = android.view.animation.AnimationUtils.loadAnimation(view.getContext(), R.anim.fadecompatin);
     if (anim != null) {
       view.setAnimation(anim);
       anim.start();
@@ -72,7 +72,7 @@ public class AnimationUtils {
   }
 
   public static void FadeOutFromXml(View view) {
-    Animation anim = AnimationUtils.loadAnimation(view.getContext(), R.anim.fadeoutCompat);
+    Animation anim = android.view.animation.AnimationUtils.loadAnimation(view.getContext(), R.anim.fadecompatout);
     if (anim != null) {
       view.setAnimation(anim);
       anim.start();

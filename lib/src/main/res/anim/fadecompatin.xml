@@ -5,7 +5,8 @@
         android:fromAlpha="0.0"
         android:interpolator="@android:anim/accelerate_interpolator"
         android:repeatCount="0"
-        android:toAlpha="1.0" />
+        android:toAlpha="1.0"
+            />
 
     <scale
         android:duration="100"
@@ -15,5 +16,6 @@
         android:pivotY="50%"
         android:repeatCount="0"
         android:toXScale="1.0"
-        android:toYScale="1.0" />
+        android:toYScale="1.0"
+            />
 </set>
