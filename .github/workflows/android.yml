@@ -50,12 +50,12 @@ jobs:
         run: ./gradlew assembleDebug --warning-mode all
           
       - name: Upload debug APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Debug-apk
           path: app/build/outputs/apk/debug
       - name: Upload editor aar debug
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Debug-aar
           path: lib/build/outputs/aar/lib-debug.aar
